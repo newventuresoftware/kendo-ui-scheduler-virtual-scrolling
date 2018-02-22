@@ -1,0 +1,20 @@
+{
+    "name": "scheduler-virtual-scroll-view",
+    "version": "1.0.0",
+    "description": "Kendo UI Scheduler custom day view implementation allowing virtual scrolling through resources.",
+    "keywords": [
+        "kendo",
+        "kendo-ui",
+        "scheduler",
+        "custom-view",
+        "virtual-scroll",
+        "multiple-resources"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "lint": "eslint --ext .js --ignore-pattern libs ./src || true"
+    },
+    "devDependencies": {
+        "eslint": "^4.16.0"
+    }
+}

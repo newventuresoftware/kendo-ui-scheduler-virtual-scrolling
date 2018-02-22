@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Custom Day View</title>
+
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.1.117/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.1.117/styles/kendo.material.min.css" />
+</head>
+
+<body>
+    <div id="scheduler"></div>
+
+    <!-- libs -->
+    <script src="https://kendo.cdn.telerik.com/2018.1.117/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.1.117/js/kendo.all.min.js"></script>
+    <script src="./scripts/libs/jquery.ba-throttle-debounce.min.js"></script>
+    <!-- custom view -->
+    <script src="./scripts/kendo.scheduler.custom-day-view.js"></script>
+    <!-- data -->
+    <script src="./scripts/data.js"></script>
+
+    <style>
+        .k-scheduler-content {
+            overflow-x: hidden;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            'use strict';
+
+            $(document).ready(function () {
+                var currentDay = new Date();
+                var startHour = 8;
+
+                $("#scheduler").kendoScheduler({
+                    date: currentDay,
+                    startTime: new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate(), startHour),
+                    height: 700,
+                    allDaySlot: false,
+                    views: [{
+                        type: scheduling.CustomDayView,
+                        title: 'Day View With Virtual Scroll'
+                    }],
+                    footer: false,
+                    dataSource: {
+                        transport: {
+                            read: function (options) {
+                                options.success(data.events);
+                            },
+                            update: function (options) {
+                                options.success(options.data);
+                            },
+                            create: function (options) {
+                                options.data.id = Math.ceil(Math.random() * 1000000000);
+                                options.success(options.data);
+                            },
+                            destroy: function (options) {
+                                options.success(options.data);
+                            }
+                        },
+                        schema: {
+                            model: {
+                                id: "id"
+                            }
+                        }
+                    },
+                    group: {
+                        date: true,
+                        resources: ["resources"],
+                        orientation: "horizontal"
+                    },
+                    resources: [{
+                        name: "resources",
+                        field: "resourceId",
+                        title: "Resource",
+                        dataSource: {
+                            data: data.resources
+                        }
+                    }],
+                    // additional configuration option
+                    numberOfResourcesDisplayed: 5
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

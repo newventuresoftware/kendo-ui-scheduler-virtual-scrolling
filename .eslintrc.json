@@ -1,0 +1,60 @@
+{
+    "env": {
+        "browser": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "script"
+    },
+    "rules": {
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "no-unused-vars": "warn",
+        "indent": [
+            "error",
+            4
+        ],
+        "no-console": "warn",
+        "no-debugger": "warn",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "key-spacing": [
+            "error",
+            {
+                "mode": "strict"
+            }
+        ],
+        "keyword-spacing": "error",
+        "no-trailing-spaces": "error",
+        "no-irregular-whitespace": [
+            "error",
+            {
+                "skipComments": true,
+                "skipTemplates": true,
+                "skipRegExps": true
+            }
+        ],
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "no-multi-spaces": "error",
+        "no-self-compare": "error",
+        "no-shadow": "error",
+        "semi-spacing": "error",
+        "space-in-parens": "error",
+        "spaced-comment": "error",
+        "no-template-curly-in-string": "error",
+        "no-implicit-coercion": "error"
+    }
+}
